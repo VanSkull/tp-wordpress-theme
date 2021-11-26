@@ -19,20 +19,70 @@ get_header();
 
 <div class="main-content">
     <div class="container single-book">
-    <h2>single book</h2>
+        <div class="single-book__presentation">
+            <div class="single-book__presentation__image">
+                <img src="https://cdn-icons-png.flaticon.com/512/4478/4478876.png" alt="Photo_du_livre" />
+            </div>
+            <div class="single-book_presentation__text">
+                <h3 class="single-book__titre"><?php the_title(); ?></h3>
+                <p class="single-book__reference">Réf : #0254E</p>
+                <p class="single-book__genres"><?php the_terms( $post->ID, 'book-genre', '<b>Genre(s) :</b> ', ' / ', '' ); ?></p>
+                <p class="single-book__ages"><?php the_terms( $post->ID, 'book-age', '<b>Âge(s) :</b> ', ' / ', '' ); ?></p>
+                <p class="single-book__resume">Le résumé du livre</p>
+            </div>
+        </div>
 
-    <?php
-        if ( have_posts() ) {
+        <div class="single-book__description">
+            <h4 class="single-book__description--entete">Contenu détaillé du livre</h4>
+            <p class="single-book__description--contenu"><?php the_content(); ?></p>            
+        </div>
 
-            // Load posts loop
-            while ( have_posts() ) {
-                the_post();
-                the_title();
-                the_content();
-            }
+        <div class="single-book__relations">
+            <h4 class="single-book__relations--entete">Livres en relation</h4>
+            <div class="single-book__relations--contenu">
+                <div class="relations--contenu__card">
+                    <div class="card__image">
+                        <img src="https://cdn-icons-png.flaticon.com/512/4478/4478876.png" alt="Photo_du_livre" />
+                    </div>
+                    <div class="card__text">
+                        <p class="card__text__titre">Titre</p>
+                        <p class="card__text__resume">Résumé</p>
+                        <a class="card__text__lien" href="#">En savoir plus</a>
+                    </div>
+                </div>
+                <div class="relations--contenu__card">
+                    <div class="card__image">
+                        <img src="https://cdn-icons-png.flaticon.com/512/4478/4478876.png" alt="Photo_du_livre" />
+                    </div>
+                    <div class="card__text">
+                        <p class="card__text__titre">Titre</p>
+                        <p class="card__text__resume">Résumé</p>
+                        <a class="card__text__lien">En savoir plus</a>
+                    </div>
+                </div>
+                <div class="relations--contenu__card">
+                    <div class="card__image">
+                        <img src="https://cdn-icons-png.flaticon.com/512/4478/4478876.png" alt="Photo_du_livre" />
+                    </div>
+                    <div class="card__text">
+                        <p class="card__text__titre">Titre</p>
+                        <p class="card__text__resume">Résumé</p>
+                        <a class="card__text__lien">En savoir plus</a>
+                    </div>
+                </div>
+                <div class="relations--contenu__card">
+                    <div class="card__image">
+                        <img src="https://cdn-icons-png.flaticon.com/512/4478/4478876.png" alt="Photo_du_livre" />
+                    </div>
+                    <div class="card__text">
+                        <p class="card__text__titre">Titre</p>
+                        <p class="card__text__resume">Résumé</p>
+                        <a class="card__text__lien">En savoir plus</a>
+                    </div>
+                </div>
+            </div>   
+        </div>
 
-        }
-    ?>
 
     </div> <!--  container -->
 </div> <!-- main-content -->
