@@ -21,18 +21,21 @@ get_header();
     <div class="container archive-book">
     <h2>Archive book</h2>
     
-    <?php
-        if ( have_posts() ) {
-
-            // Load posts loop
-            while ( have_posts() ) {
-                the_post();
-                the_title();
-                the_content();
-            }
-
-        }
-    ?>
+    <div class="archive-book__listing">
+        <h3>Tous nos livres ici :</h3>
+        <div class="archive-book__listing__all">
+            <p>Tous les livres du slideshow en forme de carte</p>
+            <?php if ( have_posts() ) : ?>
+                <ul>
+                <?php while ( have_posts() ) : the_post(); ?>
+                    <?php get_template_part('parts/content', 'book');?>
+                <?php endwhile; ?>
+                </ul>
+            <?php else : ?>
+                <p>Auncun livre disponible. Désolé.</p>
+            <?php endif; ?>
+        </div>
+    </div>
 
     </div> <!--  container -->
 </div> <!-- main-content -->
