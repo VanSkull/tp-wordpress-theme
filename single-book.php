@@ -21,25 +21,43 @@ get_header();
     <div class="container single-book">
         <div class="single-book__presentation">
             <div class="single-book__presentation__image">
-                <img src="https://cdn-icons-png.flaticon.com/512/4478/4478876.png" alt="Photo_du_livre" />
+                <?php if(has_post_thumbnail()) : ?>
+                    <?php the_post_thumbnail(); ?>
+                <?php else : ?>
+                    <img src="https://cdn-icons-png.flaticon.com/512/4478/4478876.png" alt="Photo_du_livre" />
+                <?php endif; ?>
             </div>
             <div class="single-book_presentation__text">
                 <h3 class="single-book__titre"><?php the_title(); ?></h3>
-                <p class="single-book__reference">Réf : #0254E</p>
+                <p class="single-book__reference">Réf : #<?php the_field('reference_livre'); ?></p>
                 <p class="single-book__genres"><?php the_terms( $post->ID, 'book-genre', '<b>Genre(s) :</b> ', ' / ', '' ); ?></p>
                 <p class="single-book__ages"><?php the_terms( $post->ID, 'book-age', '<b>Âge(s) :</b> ', ' / ', '' ); ?></p>
-                <p class="single-book__resume">Le résumé du livre</p>
+                <p class="single-book__resume"><strong>Résumé :</strong><br/><?php echo "dkjbhj bsfsdbddv skdv jsnld"; ?></p>
+                <!-- <p><?php /* if(get_field('mis_en_avant_livre')){ echo "Mis en avant"; }else{ echo "Pas mis en avant"; } */ ?></p> -->
             </div>
         </div>
 
         <div class="single-book__description">
             <h4 class="single-book__description--entete">Contenu détaillé du livre</h4>
-            <p class="single-book__description--contenu"><?php the_content(); ?></p>            
+            <div class="single-book__description--contenu"><?php the_content(); ?></div>            
         </div>
 
         <div class="single-book__relations">
             <h4 class="single-book__relations--entete">Livres en relation</h4>
             <div class="single-book__relations--contenu">
+
+                <?php if(function_exists('books_related_posts')): ?>
+                    <?php $related_posts = books_related_posts(); ?>
+                    <?php if($related_posts && $related_posts->have_posts()) : ?>
+                            <ul>
+                                <?php while($related_posts->have_posts()) :$related_posts->the_post(); ?>
+                                <?php get_template_part('parts/content', 'book');?>
+                                <?php endwhile; ?>
+                            </ul>
+                    <?php else : ?>
+                        <p>Auncun livre disponible. Désolé.</p>
+                    <?php endif; ?>
+                <?php endif; ?>
                 
                 <!-- <?php //if ( have_posts() ) : ?>
                     <ul>
@@ -51,7 +69,7 @@ get_header();
                     <p>Auncun livre disponible. Désolé.</p>
                 <?php //endif; ?> -->
 
-                <div class="relations--contenu__card">
+                <!-- <div class="relations--contenu__card">
                     <div class="book-card__image">
                         <img src="https://cdn-icons-png.flaticon.com/512/4478/4478876.png" alt="Photo_du_livre" />
                     </div>
@@ -70,7 +88,7 @@ get_header();
                         <p class="book-card__text__resume">Résumé</p>
                         <a class="book-card__text__lien" href="#">En savoir plus</a>
                     </div>
-                </div>
+                </div> -->
 
             </div>   
         </div>
