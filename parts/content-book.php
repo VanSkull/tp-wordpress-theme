@@ -1,7 +1,6 @@
 <li class="book-card">               
     <div class="book-card__image">
-        <img src="https://cdn-icons-png.flaticon.com/512/4478/4478876.png" alt="Photo_du_livre" />
-        <?php //if(has_post_thumbnail()){ the_post_thumbnail('event-image'); } ?>
+        <?php if(has_post_thumbnail()){ the_post_thumbnail(); } ?>
     </div>
     <div class="book-card__text">
         <p class="book-card__text__titre"><?php the_title(); ?></p>

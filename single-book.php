@@ -23,8 +23,6 @@ get_header();
             <div class="single-book__presentation__image">
                 <?php if(has_post_thumbnail()) : ?>
                     <?php the_post_thumbnail(); ?>
-                <?php else : ?>
-                    <img src="https://cdn-icons-png.flaticon.com/512/4478/4478876.png" alt="Photo_du_livre" />
                 <?php endif; ?>
             </div>
             <div class="single-book_presentation__text">
