@@ -1,8 +1,6 @@
 <?php
 $block_id = $block['id'];
-$events = get_field('events', $block_id);
-$order = get_field('ordre', $block_id);
-$books_posts = my_related_event_block($events, $order);
+$books_posts = books_forward_posts();
 
 ?>
 
@@ -11,7 +9,7 @@ $books_posts = my_related_event_block($events, $order);
     <h2 class="front-page__livres-a-la-une__entete">Nos livres à la une</h2>
     <div class="front-page__livres-a-la-une__slideshow">
         <?php if($books_posts->have_posts()): ?>
-        <ul class="related-events">
+        <ul class="books-forward">
             <?php while($books_posts->have_posts()): $books_posts->the_post(); ?>
             <?php get_template_part('parts/content', 'book');?>
             <?php endwhile; ?>
