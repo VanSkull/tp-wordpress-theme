@@ -20,7 +20,9 @@ get_header();
 <div class="main-content">
     <div class="container front-page">
 
-        <div class="front-page__presentation">
+        <?php the_content(); ?>
+
+        <!-- <div class="front-page__presentation">
             <div class="front-page__presentation_banner">
                 <h1>Bibliothèque de Lens</h1>
             </div>
@@ -43,8 +45,7 @@ get_header();
             <div class="front-page__contact__formulaire">
                 <p>Formulaire</p>
             </div>
-
-        </div>
+        </div> -->
 
     </div> <!--  container -->
 </div> <!-- main-content -->
